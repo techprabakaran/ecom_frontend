@@ -7,6 +7,7 @@ import Landing from './pages/landing'
 import { Provider } from 'react-redux';
 import { store }  from './stores/global.js';
 import Loading from './components/loading'
+import './assets/css/style.css'
 
 function App () {
   return (

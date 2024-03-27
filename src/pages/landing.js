@@ -1,41 +1,82 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+// import React, { useEffect, useState } from 'react'
 import Layout from '../components/layout'
-import {useApi} from '../hook/useApi' 
+import TopCategory from './topCategory'
+import PopularCategory from './popularCategory'
+import BestDeals from './bestDeals'
+import JustLaunched from './justLaunched'
+import ShopByBrand from './shopByBrand'
+import DiscountBanner from './discountBanner'
+// import {useApi} from '../hook/useApi' 
+import headerBanner from '../assets/images/header-banner.png'
 
 function App () {
     
-  const [requestHit] = useApi();
+//   const [requestHit] = useApi();
 
-  const [products, setProducts] = useState([]);
-  const [orders, setOrders] = useState([]);
+//   const [products, setProducts] = useState([]);
+//   const [orders, setOrders] = useState([]);
 
   
-  useEffect(()=>{
-    fetchData();
-  }, [])
+//   useEffect(()=>{
+//     fetchData();
+//   }, [])
 
 
-  const fetchData = ()=>{
+//   const fetchData = ()=>{
 
-    const allFunctions = [
-        requestHit('get', 'products/list'), 
-        requestHit('get', 'orders/list'), 
-    ]
+//     const allFunctions = [
+//         requestHit('get', 'products/list'), 
+//         requestHit('get', 'orders/list'), 
+//     ]
 
-    Promise.all(allFunctions).then((pageData)=>{
-        const productsList = pageData[0].data
-        const ordersList = pageData[1].data
-        setProducts(productsList)
-        setOrders(ordersList)
-    });
-  }
+//     Promise.all(allFunctions).then((pageData)=>{
+//         const productsList = pageData[0].data
+//         const ordersList = pageData[1].data
+//         setProducts(productsList)
+//         setOrders(ordersList)
+//     });
+//   }
 
 
 
 
   return (
     <Layout>
-        <div className='container-fluid'>
+        {/* <!--========= Header Banner Start ========== --> */}
+        <header className="header-grp header-padding">
+            <div className="container">
+                <div className="row align-items-center">
+                    <div className="col-lg-8">
+                        <h1 className='header1'>Workout Essential supplements </h1>
+                        <p className="opacity-75">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface.</p>
+                        <div>
+                            <div className="mt-4">
+                                <button type="button" href="#" className="button-primary">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-lg-4">
+                        <img src={headerBanner} alt="header-img" className="img-fluid" />
+                    </div>
+                </div>
+            </div>
+        </header>
+        {/* <!--========= Header Banner End ========== --> */}
+
+        <TopCategory />
+
+        <PopularCategory />
+
+        <BestDeals />
+
+        <JustLaunched />
+
+        <ShopByBrand />
+
+        <DiscountBanner />
+
+        {/* <div className='container-fluid'>
             <table className="table">
                 <thead>
                     <tr>
@@ -84,7 +125,7 @@ function App () {
                     ))}
                 </tbody>
             </table>
-        </div>
+        </div> */}
     </Layout>
   )
 }
